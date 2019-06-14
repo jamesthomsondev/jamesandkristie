@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <logo-header />
+      <section-intro />
+      <section-location />
+      <section-rsvp />
+    </div>
+    <footer>
+      <img class="icon icon-flower-hr" svg-inline svg-sprite src="@/assets/images/flower-hr.svg" />
+    </footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import LogoHeader from './components/LogoHeader';
+  import SectionIntro from './components/SectionIntro';
+  import SectionLocation from './components/SectionLocation';
+  import SectionRsvp from './components/SectionRsvp';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    components: {
+      LogoHeader,
+      SectionIntro,
+      SectionLocation,
+      SectionRsvp,
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  @import "./assets/styles/base.scss";
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  footer {
+    padding: 2rem;
+    text-align: center;
+    color: #BDDCD3;
+    background-color: #062934;
+  }
 </style>
