@@ -2,9 +2,15 @@ button {
   font-family: 'Garamond';
   font-size: 1.4em;
   color: white;
-  padding: 0.5em 1.2em;
+  padding: 0.6em 1.4em;
   border-radius: 0.5em;
+  border-style: none;
   background-color: #062934;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #063A5C;
+  }
 
   &:active,
   &:focus {

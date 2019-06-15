@@ -10,7 +10,7 @@
 
     <div class="text">
       <h3 class="h1">Accomodation</h3>
-      <p>The agriturismo itself can sleep about 40 people and will be reserved for family and bridal party, however there is plenty of accommodation very close to the location that our coordinator will organise for us. Budget wise it's around 65Euro pp per night mark, including breakfast. RSVP with how many people (kids are invited too of course) and we will work that out closer to the date. Please ensure you include your email address as we will continue to update you as we get more information. Looking forward to seeing you there!</p>
+      <p>The agriturismo itself can sleep about 40 people and will be reserved for family and bridal party, however there is plenty of accommodation very close to the location that our coordinator will organise for us. Budget wise it's around €65 pp per night mark, including breakfast. RSVP with how many people (kids are invited too of course) and we will work that out closer to the date. Please ensure you include your email address as we will continue to update you as we get more information. Looking forward to seeing you there!</p>
       <a class="link" href="https://casanuova.info/" target="_blank">Find out more &raquo;</a>
     </div>
     
