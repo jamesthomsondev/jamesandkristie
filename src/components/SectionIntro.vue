@@ -30,6 +30,8 @@
   }
 
   .watercolour {
+    margin: 0 -2rem 2rem;
+
     .line {
       display: none;
     }

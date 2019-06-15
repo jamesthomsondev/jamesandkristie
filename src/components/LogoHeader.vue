@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <img class="icon icon-flower-hr" svg-inline svg-sprite src="@/assets/images/flower-hr.svg" />
+    <img class="icon icon-flower-hr" src="@/assets/images/flower-hr.svg" />
     <img class="logo" svg-inline src="@/assets/images/logo.svg" />
     <h2>
       September 6, 7 & 8, 2020
@@ -21,7 +21,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 8rem 0;
+    margin: 6rem 0;
+
+    @include min-sm {
+      margin: 8rem 0;
+    }
   }
 
   h2 {
@@ -33,9 +37,5 @@
 
   .logo {
     margin: 0 auto;
-  }
-
-  .icon-flower-hr {
-    margin-bottom: 4rem;
   }
 </style>

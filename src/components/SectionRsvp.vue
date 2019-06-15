@@ -1,5 +1,7 @@
 <template>
   <section>
+    <img class="icon icon-flower-hr" src="@/assets/images/flower-hr.svg" />
+
     <div class="header" v-if="isSuccess">
       <div class="heading">Thanks for RSVPing</div>
       <p>We look forward to seeing you there!</p>
@@ -198,6 +200,16 @@
 </script>
 
 <style scoped lang="scss">
+
+  .icon-flower-hr {
+    display: block;
+    margin: 0 auto 6rem auto;
+
+    @include min-sm {
+      display: none;
+    }
+  }
+
   .header {
     margin: 0 1rem;
     text-align: center;

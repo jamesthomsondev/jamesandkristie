@@ -43,5 +43,9 @@
     text-align: center;
     color: #BDDCD3;
     background-color: #062934;
+
+    .icon-flower-hr {
+      margin-bottom: 0;
+    }
   }
 </style>
