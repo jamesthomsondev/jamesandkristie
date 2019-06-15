@@ -1,14 +1,13 @@
 <template>
   <section>
     <div class="header" v-if="isSuccess">
-      <div class="heading">Thanks for RSVPing!</div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique sit magni, repudiandae! Quisquam officiis quo nulla tenetur, architecto vel! Ipsum, odio nemo vitae repellat id ullam ad reiciendis dolor recusandae.</p>
+      <div class="heading">Thanks for RSVPing</div>
+      <p>We look forward to seeing you there!</p>
     </div>
 
     <form class="form" @submit.prevent="submit" v-else>
       <div class="header">
         <div class="heading">RSVP</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique sit magni, repudiandae! Quisquam officiis quo nulla tenetur, architecto vel! Ipsum, odio nemo vitae repellat id ullam ad reiciendis dolor recusandae.</p>
       </div>
 
       <div class="fieldset">
@@ -16,17 +15,17 @@
           <label for="name">Name</label>
           <input name="name" id="name" type="text" v-model="$v.fields.name.$model">
           <div class="error" v-if="!$v.fields.name.required && $v.fields.$dirty">Name is required</div>
-          <div class="error" v-if="!$v.fields.name.minLength && $v.fields.$dirty">Name must have at least {{$v.fields.name.$params.minLength.min}} letters</div>
         </div>
         <div class="field" :class="{ 'field--error': $v.fields.email.$error && $v.$dirty }">
           <label for="email">Email</label>
           <input name="email" id="email" type="text" v-model="$v.fields.email.$model">
           <div class="error" v-if="!$v.fields.email.required && $v.fields.$dirty">Email is required</div>
+          <div class="error" v-if="!$v.fields.email.email && $v.fields.$dirty">Must be a valid email</div>
         </div>
       </div>
 
       <div class="fieldset">
-        <div class="field" :class="{ 'field--error': $v.fields.attending.$error && $v.$dirty }">
+        <div class="field field--full" :class="{ 'field--error': $v.fields.attending.$error && $v.$dirty }">
           <label for="attending">Will you attend?</label>
           <select name="attending" id="attending" v-model.number="$v.fields.attending.$model">
             <option value="" disabled>--Please select one--</option>
@@ -35,8 +34,10 @@
           </select>
           <div class="error" v-if="!$v.fields.attending.required && $v.fields.$dirty">Please select one</div>
         </div>
+      </div>
 
-        <div class="field" :class="{ 'field--error': $v.fields.meal.$error && $v.$dirty }">
+      <div class="fieldset" v-if="isAttending">
+        <div class="field field--full" :class="{ 'field--error': $v.fields.meal.$error && $v.$dirty }">
           <label for="meal">Meal preference</label>
           <select name="meal" id="meal" v-model.number="$v.fields.meal.$model">
             <option value="" disabled>--Please select one--</option>
@@ -47,20 +48,21 @@
         </div>
       </div>
 
-      <div class="fieldset">
+      <div class="fieldset" v-if="isAttending">
         <div class="field" :class="{ 'field--error': $v.fields.adults.$error && $v.$dirty }">
           <label for="adults"># of adults</label>
           <select name="adults" id="adults" v-model.number="$v.fields.adults.$model">
+            <option value="" disabled>--Please select one--</option>
             <option value="1">1</option>
             <option value="2">2</option>
           </select>
           <div class="error" v-if="!$v.fields.adults.required && $v.fields.$dirty"># of adults is required</div>
-          <div class="error" v-if="!$v.fields.adults.minValue && $v.fields.$dirty">Select at least {{$v.fields.adults.$params.minValue.min}} adults</div>
         </div>
 
-        <div class="field" :class="{ 'field--error': $v.fields.children.$error && $v.$dirty }">
+        <div class="field" :class="{ 'field--error': $v.fields.children.$error && $v.$dirty }" v-if="isAttending">
           <label for="children"># of children</label>
           <select name="children" id="children" v-model.number="$v.fields.children.$model">
+            <option value="" disabled>--Please select one--</option>
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -68,15 +70,15 @@
           <div class="error" v-if="!$v.fields.children.required && $v.fields.$dirty"># of children is required</div>
         </div>
 
-        <div class="field" :class="{ 'field--error': $v.fields.beds.$error && $v.$dirty }">
+        <div class="field" :class="{ 'field--error': $v.fields.beds.$error && $v.$dirty }" v-if="isAttending">
           <label for="beds"># of beds</label>
           <select name="beds" id="beds" v-model.number="$v.fields.beds.$model">
+            <option value="" disabled>--Please select one--</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="2">3</option>
           </select>
           <div class="error" v-if="!$v.fields.beds.required && $v.fields.$dirty"># of beds is required</div>
-          <div class="error" v-if="!$v.fields.beds.minValue && $v.fields.$dirty">Select at least {{$v.fields.beds.$params.minValue.min}} beds</div>
         </div>
       </div>
 
@@ -96,7 +98,7 @@
 
 <script> 
   import axios from 'axios';
-  import { required, minLength, minValue, email } from 'vuelidate/lib/validators'
+  import { required, minLength, email, requiredIf } from 'vuelidate/lib/validators'
 
   export default {
     name: 'SectionRsvp',
@@ -107,17 +109,23 @@
         email: '',
         attending: '',
         meal: '',
-        adults: 1,
-        children: 0,
-        beds: 1,
+        adults: null,
+        children: null,
+        beds: null,
         notes: '',
       },
       
       isSuccess: false
     }),
 
-    validations: {
-      fields: {
+    computed: {
+      isAttending () {
+        return this.fields.attending === 'Yes' ? true : false;
+      }
+    },
+
+    validations() {
+      let rules = {
         name: {
           required,
           minLength: minLength(3)
@@ -129,20 +137,38 @@
         attending: {
           required
         },
-        meal: {
-          required
-        },
-        adults: {
-          required,
-          minValue: minValue(1)
-        },
-        children: {
-          required
-        },
-        beds: {
-          required,
-           minValue: minValue(1)
+      }
+
+      if (this.isAttending) {
+        rules = {
+          ...rules,
+          meal: {
+            required
+          },
+          adults: {
+            required
+          },
+          children: {
+            required
+          },
+          beds: {
+            required
+          }
         }
+      }
+
+      return {
+        fields: rules
+      };
+    },
+
+    watch: {
+      isAttending: function (bool) {
+        if (bool) return;
+
+        this.fields.adults = null;
+        this.fields.children = null;
+        this.fields.beds = null;
       }
     },
 
@@ -172,7 +198,13 @@
 </script>
 
 <style scoped lang="scss">
+  .header {
+    margin: 0 1rem;
+    text-align: center;
+  }
+
   .heading {
+    margin-bottom: 2rem;
     font-family: 'Quentin';
     font-size: 5rem;
     text-align: center;
