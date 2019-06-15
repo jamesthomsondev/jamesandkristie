@@ -2,6 +2,7 @@
   <header class="header">
     <img class="icon icon-flower-hr" src="@/assets/images/flower-hr.svg" />
     <img class="logo" svg-inline src="@/assets/images/logo.svg" />
+    <img class="splash" src="@/assets/images/splash-bg.png">
     <h2>
       September 6, 7 & 8, 2020
       <br>
@@ -18,6 +19,7 @@
 
 <style scoped lang="scss">
   header {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,5 +39,21 @@
 
   .logo {
     margin: 0 auto;
+  }
+
+  .splash {
+    position: absolute;
+    top: 5rem;
+    z-index: -1;
+    
+    width: 100%;
+    max-width: 555px;
+    transform: translateY(5rem) translateX(5rem) scale(1.6);
+  }
+  
+  @include min-sm {
+    .splash {
+      transform: translateX(5rem);
+    }
   }
 </style>
