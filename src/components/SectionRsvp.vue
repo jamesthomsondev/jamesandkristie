@@ -10,6 +10,7 @@
     <form class="form" @submit.prevent="submit" v-else>
       <div class="header">
         <div class="heading">RSVP</div>
+        <img class="splash" src="@/assets/images/splash-bg-sm.png" />
       </div>
 
       <div class="fieldset">
@@ -211,8 +212,19 @@
   }
 
   .header {
+    position: relative;
     margin: 0 1rem;
     text-align: center;
+
+    .splash {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: -1;
+      width: 250px;
+      transform: translateX(-40%);
+    }
   }
 
   .heading {

@@ -9,7 +9,7 @@
     <img class="gallery-img" src="@/assets/images/gallery/7.jpg" alt="">
 
     <div class="text">
-      <h3 class="h2">Accomodation</h3>
+      <h3 class="h2">Accommodation</h3>
       <p>The agriturismo sleeps around 40 people and will be reserved for family and the bridal party. There is plenty of accommodation very close to the location that our coordinator will help organise for us. Average price is around €65 pp per night, including breakfast.</p>
       <a class="link" href="https://casanuova.info/" target="_blank">Find out more &raquo;</a>
     </div>
@@ -49,6 +49,14 @@
     margin-bottom: 4rem;
   }
 
+  @include min-xs {
+    .line {
+      position: absolute;
+      left: 52%;
+      top: 30rem;
+    }
+  }
+
   @include min-sm {
     .illustration {
       .flowers,
@@ -62,6 +70,7 @@
         top: 5rem;
         left: 50%;
         z-index: -1;
+        width: 100%;
         transform: translateX(-50%);
       }
     }
@@ -95,9 +104,7 @@
       }
 
       .line {
-        position: absolute;
-        left: 110px;
-        top: 300px;
+        // left: 11rem;
       }
     }
 

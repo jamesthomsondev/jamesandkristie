@@ -47,7 +47,7 @@
     z-index: -1;
     
     width: 100%;
-    max-width: 555px;
+    max-width: 560px;
     transform: translateY(5rem) translateX(5rem) scale(1.6);
   }
   

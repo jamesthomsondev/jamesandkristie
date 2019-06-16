@@ -33,9 +33,14 @@
   @import "./assets/styles/base.scss";
 
   .container {
+    overflow: hidden;
     max-width: 980px;
     margin: 0 auto;
     padding: 0 3rem;
+
+    @include min-sm {
+      overflow: initial;
+    }
   }
 
   footer {
