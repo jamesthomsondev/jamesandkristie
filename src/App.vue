@@ -38,7 +38,7 @@
     margin: 0 auto;
     padding: 0 3rem;
 
-    @include min-sm {
+    @include min-md {
       overflow: initial;
     }
   }

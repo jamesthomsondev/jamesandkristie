@@ -32,10 +32,6 @@
   .watercolour {
     margin: 0 -2rem 2rem;
 
-    .img {
-      max-width: 540px;
-    }
-
     .line {
       display: none;
     }
@@ -54,18 +50,23 @@
       position: relative;
       order: 1;
 
+      .img {
+        max-width: 660px;
+      }
+
       .line {
         position: absolute;
-        right: -6.6rem;
-        top: 29rem;
+        right: -4.6rem;
+        top: 36.5rem;
         display: block;
       }
     }
 
     .text {
       display: flex;
+      flex: 1 0 40%;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       order: 0;
       margin-right: 3rem;
     }

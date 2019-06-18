@@ -11,7 +11,7 @@
     <div class="text">
       <h3 class="h2">Accommodation</h3>
       <p>The agriturismo sleeps around 40 people and will be reserved for family and the bridal party. There is plenty of accommodation very close to the location that our coordinator will help organise for us. Average price is around €65 pp per night, including breakfast.</p>
-      <a class="link" href="https://casanuova.info/" target="_blank">Find out more &raquo;</a>
+      <a class="link" href="https://casanuova.info/" target="_blank">Locanda e Fattoria Casanuova &raquo;</a>
     </div>
     
     <div class="illustration">

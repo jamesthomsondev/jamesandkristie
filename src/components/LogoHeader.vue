@@ -26,7 +26,7 @@
     margin: 6rem 0;
 
     @include min-sm {
-      margin: 8rem 0;
+      margin: 4rem 0 8rem 0;
     }
   }
 
@@ -50,10 +50,26 @@
     max-width: 560px;
     transform: translateY(5rem) translateX(5rem) scale(1.6);
   }
+
+  @include min-xs {
+    .splash {
+      transform: translateY(3rem) translateX(5rem) scale(1.2);
+    }
+  }
   
   @include min-sm {
+    .icon-flower-hr {
+      margin-bottom: 6rem;
+    }
+
+    .logo {
+      width: 438px;
+      height: 285px;
+    }
+
     .splash {
-      transform: translateX(5rem);
+      max-width: 800px;
+      transform: translateY(2rem) translateX(5rem);
     }
   }
 </style>

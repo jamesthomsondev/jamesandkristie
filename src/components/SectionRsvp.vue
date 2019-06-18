@@ -17,13 +17,13 @@
         <div class="field" :class="{ 'field--error': $v.fields.name.$error && $v.$dirty }">
           <label for="name">Name</label>
           <input name="name" id="name" type="text" v-model="$v.fields.name.$model">
-          <div class="error" v-if="!$v.fields.name.required && $v.fields.$dirty">Name is required</div>
+          <div class="error" v-if="!$v.fields.name.required && $v.fields.$dirty">Who are you?</div>
         </div>
         <div class="field" :class="{ 'field--error': $v.fields.email.$error && $v.$dirty }">
           <label for="email">Email</label>
           <input name="email" id="email" type="text" v-model="$v.fields.email.$model">
-          <div class="error" v-if="!$v.fields.email.required && $v.fields.$dirty">Email is required</div>
-          <div class="error" v-if="!$v.fields.email.email && $v.fields.$dirty">Must be a valid email</div>
+          <div class="error" v-if="!$v.fields.email.required && $v.fields.$dirty">Where can we reach you?</div>
+          <div class="error" v-if="!$v.fields.email.email && $v.fields.$dirty">Hmmm, that's not a valid email.</div>
         </div>
       </div>
 
@@ -59,7 +59,7 @@
             <option value="1">1</option>
             <option value="2">2</option>
           </select>
-          <div class="error" v-if="!$v.fields.adults.required && $v.fields.$dirty"># of adults is required</div>
+          <div class="error" v-if="!$v.fields.adults.required && $v.fields.$dirty">Well, someone has to come.</div>
         </div>
 
         <div class="field" :class="{ 'field--error': $v.fields.children.$error && $v.$dirty }" v-if="isAttending">
@@ -70,7 +70,7 @@
             <option value="1">1</option>
             <option value="2">2</option>
           </select>
-          <div class="error" v-if="!$v.fields.children.required && $v.fields.$dirty"># of children is required</div>
+          <div class="error" v-if="!$v.fields.children.required && $v.fields.$dirty">How many little ones do you have?</div>
         </div>
 
         <div class="field" :class="{ 'field--error': $v.fields.beds.$error && $v.$dirty }" v-if="isAttending">
@@ -81,14 +81,14 @@
             <option value="2">2</option>
             <option value="2">3</option>
           </select>
-          <div class="error" v-if="!$v.fields.beds.required && $v.fields.$dirty"># of beds is required</div>
+          <div class="error" v-if="!$v.fields.beds.required && $v.fields.$dirty">Where are you going to sleep then?</div>
         </div>
       </div>
 
       <div class="fieldset">
         <div class="field field--full">
           <label for="notes">Notes</label>
-          <textarea id="notes" name="notes" rows="8" v-model="fields.notes" placeholder="Please attach any extra notes that we may need to know about."></textarea>
+          <textarea id="notes" name="notes" rows="8" v-model="fields.notes" placeholder="Anything else we need to know about?"></textarea>
         </div>
       </div>
       
@@ -264,13 +264,24 @@
     }
 
     input,
+    select {
+      height: 40px;
+    }
+
+    input,
     select,
     textarea {
       width: 100%;
       padding: 1rem;
       border: 2px solid #AD8D82;
+      background-color: #fff;
       color: #AD8D82;
       font-size: inherit;
+      font-style: italic;
+
+      &::placeholder {
+       color: #AD8D82; 
+      }
     }
 
     &--full {
@@ -280,7 +291,9 @@
     }
 
     &--error {
-      input {
+      input,
+      select,
+      textarea {
         border-color: red;
       }
     }
