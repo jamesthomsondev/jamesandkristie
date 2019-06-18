@@ -101,12 +101,12 @@
 
 <script> 
   import axios from 'axios';
-  import { required, minLength, email, requiredIf } from 'vuelidate/lib/validators'
+  import { required, minLength, email } from 'vuelidate/lib/validators'
 
   export default {
     name: 'SectionRsvp',
 
-    data: vm => ({
+    data: () => ({
       fields: {
         name: '',
         email: '',
